@@ -1,0 +1,47 @@
+.button {
+   width: 100%;
+   padding: 15px 25px 15px 11px;
+   background-color: white;
+   border: none;
+   border-radius: 10px;
+   display: flex;
+   justify-content: space-between;
+	align-items: center;
+   cursor: pointer;
+   margin-bottom: 5px;
+	height: 52px;
+}
+
+.left {
+	flex: 1 0 auto;
+	margin-right: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.right {
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-left: 20px;
+	border-left: 1px solid #ecf2f5;
+}
+
+.name {
+   font-weight: 600;
+   font-size: 14px;
+}
+
+.amount {
+   display: block;
+   font-weight: 400;
+   font-size: 12px;
+   line-height: 15px;
+   color: #a3b8c2;
+}
+
+.arrowRotate {
+	transform: rotate(90deg)
+}

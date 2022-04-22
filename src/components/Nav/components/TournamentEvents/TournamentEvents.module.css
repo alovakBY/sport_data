@@ -1,0 +1,50 @@
+.label {
+   background: #f4fbfe;
+   border-radius: 8px;
+   display: flex;
+   justify-content: space-between;
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 15px;
+   color: #142e3f;
+   padding: 9px 9px 9px 15px;
+   cursor: pointer;
+   margin-bottom: 5px;
+}
+
+.amount {
+   margin-left: 7px;
+   font-size: 12px;
+   line-height: 15px;
+   color: #a3b8c2;
+}
+
+.checkboxWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.input {
+	width: 0;
+	height: 0;
+	opacity: 0;
+}
+
+.customCheckbox {
+	display: block;
+	border: 1px solid #a5b9c7;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 18px;
+    height: 18px;
+    background-position: 2px 3px;
+    background-size: 12px;
+    background-repeat: no-repeat;
+}
+
+.input:checked ~ .customCheckbox {
+	background-image: url(../../../../static/check.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+}
