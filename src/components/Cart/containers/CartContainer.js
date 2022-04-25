@@ -1,3 +1,5 @@
+import classes from "./CartContainer.module.css";
+
 export const CartContainer = () => {
-   return <div>CartContainer</div>;
+   return <div className={classes.container}>CartContainer</div>;
 };

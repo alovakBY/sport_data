@@ -1,0 +1,15 @@
+.container {
+	padding: 0 10px;
+}
+
+.tournament {
+	background: #142e3f;
+	border-radius: 7px 7px 0 0;
+	display: flex;
+	padding: 17px 18px;
+	color: #fff;
+	font-weight: 700;
+	font-size: 15px;
+	line-height: 18px;
+	text-transform: uppercase;
+}

@@ -39,11 +39,9 @@ const parseStr = (str) => {
 export const parseGroupMarkets = (obj) => {
    const marketsObj = Object.keys(obj).reduce((acc, key) => {
       const arr = obj[key].map((marketString) => parseStr(marketString));
-
       acc[key] = arr;
       return acc;
    }, {});
 
-   // console.log(marketsObj);
    return marketsObj;
 };

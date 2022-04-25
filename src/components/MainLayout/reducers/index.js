@@ -6,7 +6,7 @@ import { getEventsByTournaments } from "../../../utils/getEventsByTournaments";
 
 const defaultState = {
    events: [],
-   tournaments: null,
+   selected_tournaments: [],
 };
 
 export const mainPageReducer = handleActions(
@@ -20,34 +20,18 @@ export const mainPageReducer = handleActions(
                markets: parseGroupMarkets(event.group_markets),
             };
          });
-         const tournaments = events.reduce((result, event) => {
-            const tournament_name = event.data.tournament.name;
-            result[tournament_name]
-               ? (result[tournament_name] = {
-                    ...result[tournament_name],
-                    events: [...result[tournament_name].events, event],
-                 })
-               : (result[tournament_name] = {
-                    tournament_name,
-                    tournament_id: event.data.tournament.id,
-                    sport: event.data.sport.name,
-                    country: event.data.country.name,
-                    isSelected: false,
-                    events: [event],
-                 });
-            return result;
-         }, {});
-         return { ...state, events, tournaments };
+         // ! Нужно ли это?
+         const sortEvents = events.sort((a, b) => {
+            if (a.id < b.id) return -1;
+            if (a.id > b.id) return 1;
+            return 0;
+         });
+         return { ...state, events: sortEvents /* , tournaments  */ };
       },
       [actions.UPDATE_EVENTS]: (state, { payload }) => {
-         // console.log(payload);
-         // const oldEventsTournament = [...state.tournaments];
          const oldEvents = [...state.events];
+         // const oldTournaments = { ...state.tournaments };
          const updatedEvents = [...payload];
-
-         // здесь мы обновляем стейт по турнирам
-
-         // заканчиваем обновлять стейт
 
          const events = updatedEvents.reduce((result, updateEvent) => {
             const oldEvent = oldEvents.find((oldEv) => {
@@ -68,7 +52,7 @@ export const mainPageReducer = handleActions(
                      ? parseGroupMarkets(updateEvent.group_markets)
                      : oldEvent.markets,
                };
-               console.log(updatedEvent);
+               // console.log(updatedEvent);
                result.push(updatedEvent);
             }
             if (!oldEvent) {
@@ -76,14 +60,52 @@ export const mainPageReducer = handleActions(
                   ...updateEvent,
                   markets: parseGroupMarkets(updateEvent.group_markets),
                };
-               // console.log(newEvent);
                result.push(newEvent);
             }
             return result;
          }, []);
-         const tournaments = getEventsByTournaments(events);
-         // console.log(events);
-         return { ...state, events, tournaments };
+
+         // const tournaments_without_events = Object.keys(oldTournaments).reduce(
+         //    (result, tournament) => {
+         //       result[tournament] = {
+         //          ...oldTournaments[tournament],
+         //          events: [],
+         //       };
+         //       return result;
+         //    },
+         //    {}
+         // );
+
+         // const tournaments = getEventsByTournaments(
+         //    events,
+         //    tournaments_without_events
+         // );
+         const sortEvents = events.sort((a, b) => {
+            if (a.id < b.id) return -1;
+            if (a.id > b.id) return 1;
+            return 0;
+         });
+
+         return { ...state, events: sortEvents };
+      },
+      [actions.UPDATE_SELECTED_TOURNAMENTS]: (state, { payload }) => {
+         // console.log(payload);
+         const copy = [...state.selected_tournaments];
+         const id = payload;
+         const selected_tournament = state.selected_tournaments.findIndex(
+            (active_id) => {
+               return id === active_id;
+            }
+         );
+         if (selected_tournament === -1) {
+            copy.unshift(id);
+         } else {
+            copy.splice(selected_tournament, 1);
+         }
+         return {
+            ...state,
+            selected_tournaments: copy,
+         };
       },
    },
    defaultState

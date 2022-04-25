@@ -1,59 +1,56 @@
-import { useEffect, useMemo, useState } from "react";
-import { useSelector } from "react-redux";
+import { useCallback, useEffect, useMemo, useState, memo } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import { KindOfSport } from "../components/KindOfSport";
 
 import { mainPageSelector } from "../../MainLayout/selectors";
+import * as actions from "../../MainLayout/actions";
 
 import classes from "./NavContainer.module.css";
 
-export const NavContainer = () => {
-   // const [selectedTournaments, setselectedTournaments] = useState([]);
+export const NavContainer = memo(() => {
    const { events } = useSelector(mainPageSelector);
+   const dispatch = useDispatch();
 
-   // const obj = useMemo(() => {
-   //    getNavStructure(events);
-   // }, [events]);
-
-   // console.log(obj);
-
-   const kindsOfSport = events.reduce((acc, event) => {
-      const kindOfSport = event.data.sport.name;
-      acc[kindOfSport]
-         ? (acc[kindOfSport] = [...acc[kindOfSport], event])
-         : (acc[kindOfSport] = [event]);
-      return acc;
+   const kindsOfSport = events.reduce((result, event) => {
+      const sport = event.data.sport.name;
+      result[sport] ? result[sport].push(event) : (result[sport] = [event]);
+      return result;
    }, {});
 
-   const sortKindsOfSportArr =
-      kindsOfSport &&
-      Object.keys(kindsOfSport).sort((a, b) => {
-         if (kindsOfSport[a] < kindsOfSport[b]) {
+   const handleSelectedTournament = useCallback((id) => {
+      dispatch(actions.UPDATE_SELECTED_TOURNAMENTS(id));
+   }, []);
+
+   const sortKindsOfSportArr = Object.keys(kindsOfSport).sort(
+      (prevSport, nextSport) => {
+         if (kindsOfSport[prevSport].length < kindsOfSport[nextSport].length) {
             return 1;
          }
-         if (kindsOfSport[a] > kindsOfSport[b]) {
+         if (kindsOfSport[prevSport].length > kindsOfSport[nextSport].length) {
             return -1;
          }
          return 0;
-      });
+      }
+   );
 
    return (
       <div className={classes.container}>
          <div className={classes.left}>
-            {kindsOfSport &&
-               sortKindsOfSportArr.map((kind) => {
-                  const amount = kindsOfSport[kind].length;
-                  return (
-                     <KindOfSport
-                        eventsBySport={kindsOfSport[kind]}
-                        key={kind}
-                        name={kind}
-                        amount={amount}
-                     />
-                  );
-               })}
+            {sortKindsOfSportArr.map((sport) => {
+               const amount = kindsOfSport[sport].length;
+               return (
+                  <KindOfSport
+                     eventsBySport={kindsOfSport[sport]}
+                     key={sport}
+                     sport={sport}
+                     amount={amount}
+                     handleSelectedTournament={handleSelectedTournament}
+                  />
+               );
+            })}
          </div>
          <div></div>
       </div>
    );
-};
+});

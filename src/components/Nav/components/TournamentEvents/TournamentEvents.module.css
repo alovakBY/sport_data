@@ -1,3 +1,7 @@
+.link {
+	text-decoration: none;
+}
+
 .label {
    background: #f4fbfe;
    border-radius: 8px;
@@ -43,8 +47,8 @@
     background-repeat: no-repeat;
 }
 
-.input:checked ~ .customCheckbox {
-	background-image: url(../../../../static/check.svg);
+.activeCheckbox {
+   background-image: url(../../../../static/check.svg);
 	background-position: center;
 	background-repeat: no-repeat;
 }
