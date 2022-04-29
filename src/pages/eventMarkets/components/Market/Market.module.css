@@ -1,0 +1,65 @@
+.marketTitle {
+  background: linear-gradient(90deg, #e1ab48, #a47353);
+  border-radius: 7px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+  color: #fff;
+  height: 35px;
+  width: 100%;
+  text-transform: capitalize;
+  align-items: center;
+  display: flex;
+  padding: 0 12px;
+  justify-content: space-between;
+}
+
+.marketType {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: right;
+  color: #193b52;
+}
+
+.coeffWrapper {
+  flex: 1 0 auto;
+  width: auto;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-radius: 7px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  color: #193b52;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  height: 40px;
+  cursor: pointer;
+}
+
+.coeffWrapper:hover {
+  background: linear-gradient(90deg, #e1ab48, #a47353);
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.coeffWrapper + .coeffWrapper {
+  margin-left: 10px;
+}
+
+.coeff {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.inCart {
+  background: linear-gradient(90deg, #e1ab48, #a47353);
+  color: #fff;
+  border: 1px solid #fff;
+}

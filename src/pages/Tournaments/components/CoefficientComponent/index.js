@@ -1,4 +1,3 @@
-export const CoefficientComponent = ({ id, value, event }) => {
-   // console.log(event);
-   return <span>{value}</span>;
+export const CoefficientComponent = ({ value }) => {
+  return <span>{value}</span>;
 };

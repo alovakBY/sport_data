@@ -1,0 +1,95 @@
+.container {
+  background: #fff;
+  border-radius: 7px;
+  padding: 23px 23px 26px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.totalOdds,
+.totalStake {
+  flex: 0 0 auto;
+  width: 49%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: #193b52;
+  margin-right: 3px;
+  padding: 7px 0;
+  max-height: 48px;
+}
+
+.totalOdds {
+  background: #ecf2f5;
+}
+.totalStake {
+  background: #f7ebe1;
+}
+
+.totalOdds > span:first-child,
+.totalStake > span:first-child {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  color: #a3b8c2;
+  text-transform: uppercase;
+}
+.totalOdds > span:last-child,
+.totalStake > span:last-child {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.bottomItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ecf2f5;
+}
+
+.bottomItem > span:first-child {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 2;
+  flex: 1 0 auto;
+}
+
+.bottomItem > span:last-child {
+  flex: 0 0 auto;
+  text-align: right;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.bottomItem > span:last-child input {
+  border: none;
+  width: 70px;
+  background: #ecf2f5;
+  line-height: 17px;
+  text-align: right;
+  color: #01b3b3;
+  height: 39px;
+  font-weight: 600;
+  font-size: 15px;
+  padding-right: 14px;
+}
+
+.bottomItem > span:last-child input:focus-visible {
+  outline: none;
+}
+
+.bottomItemPadding {
+  padding-right: 14px;
+}
