@@ -7,17 +7,17 @@ import { EventMarketsContainer } from "../pages/eventMarkets/containers/EventMar
 import { ROUTE_NAMES } from "./routeNames";
 
 export const Router = () => {
-  return (
-    <Routes>
-      <Route path={ROUTE_NAMES.HOME} element={<MainContainer />} />
-      <Route
-        path={ROUTE_NAMES.TOURNAMENTS}
-        element={<TournamentsContainer />}
-      />
-      <Route
-        path={ROUTE_NAMES.EVENT_MARKETS}
-        element={<EventMarketsContainer />}
-      />
-    </Routes>
-  );
+   return (
+      <Routes>
+         <Route path={ROUTE_NAMES.HOME} element={<MainContainer />} />
+         <Route
+            path={ROUTE_NAMES.TOURNAMENTS}
+            element={<TournamentsContainer />}
+         />
+         <Route
+            path={ROUTE_NAMES.EVENT_MARKETS}
+            element={<EventMarketsContainer />}
+         />
+      </Routes>
+   );
 };
