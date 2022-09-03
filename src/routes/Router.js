@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import { MainContainer } from "../pages/mainPage/containers/MainContainer";
-import { TournamentsContainer } from "../pages/tournamentsPage/containers/TournamentsContainer";
+import { TournamentsContainer } from "../pages/tournaments/containers/TournamentsContainer";
 import { EventMarketsContainer } from "../pages/eventMarkets/containers/EventMarketsContainer";
 
 import { ROUTE_NAMES } from "./routeNames";
